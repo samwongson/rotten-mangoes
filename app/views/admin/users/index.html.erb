@@ -1,0 +1,18 @@
+  <h1>admin user list</h1>
+  <%= link_to "Back to all movies", movies_path %>
+  <hr>
+  <% if @users == nil %>
+    <h1>NOT ALLOWED</h1>
+  <% else %>
+    <%= link_to "Submit a user!",  new_admin_user_path %>
+    <%= paginate @users %>
+    <% @users.each do |user| %>
+      
+      <%= user.full_name %> 
+      <p>email: <%= user.email %></p>
+      <h4><%= link_to user.firstname, edit_admin_user_path(user) %></h4>
+      
+      
+      <hr>
+    <% end %>
+  <% end %>
