@@ -5,30 +5,10 @@ class MoviesController < ApplicationController
   def index
     # byebug
     @movies = Movie.all
-
-    if params[:title]
-
-      @movies = @movies.where("title like ?", "%#{params[:title]}%")
+    # byebug
+    if params[:title] || params[:director] || params[:runtime_in_minutes]
+      @movies = Movie.search(params)
     end
-    if params[:director]
-      @movies = @movies.where("director like?", "%#{params[:director]}")
-    end
-
-    if params[:runtime_in_minutes]
-
-      case params[:runtime_in_minutes]
-      when '< 90'
-        @movies = @movies.where("runtime_in_minutes < 90")
-      when '90 - 120'
-        @movies = @movies.where("runtime_in_minutes > 89 AND runtime_in_minutes < 121")
-      when '> 120'
-        @movies = @movies.where("runtime_in_minutes > 120")
-      end
-
-    end
-
-
-
   end
 
 

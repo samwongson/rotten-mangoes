@@ -11,7 +11,7 @@
 
     
     <%= label_tag(:runtime_in_minutes, "Search by Runtime") %>
-    <%= select_tag(:runtime_in_minutes, options_for_select(['< 90', '90 - 120', '> 120']) ) %>    
+    <%= select_tag(:runtime_in_minutes, options_for_select(['', '< 90', '90 - 120', '> 120'], disabled: 'nil') ) %>    
 
     <%= submit_tag("Search") %>
 
@@ -20,6 +20,7 @@
   </p>
 
   <hr>
+  
   <% @movies.each do |movie| %>
     <%= link_to image_tag(movie.poster_image_url.thumb), movie_path(movie) %>
     <h2><%= link_to movie.title, movie_path(movie) %></h2>
