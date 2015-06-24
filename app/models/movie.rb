@@ -28,6 +28,10 @@ class Movie < ActiveRecord::Base
       
   end
 
+  def self.search(query)
+
+  end
+
   protected
 
   def release_date_is_in_the_future
